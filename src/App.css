@@ -1,0 +1,18 @@
+.containerGlobal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.gameGlobal {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #fcf4b6;
+    border-radius: 5px;
+}
+
+.velhaCorrente{
+    background-color: #eb9961;
+}

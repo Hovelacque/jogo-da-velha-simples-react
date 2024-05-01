@@ -1,7 +1,7 @@
 import { useState } from "react"
 import './index.css'
 
-export default ({  }) => {
+export default ({ current, change }) => {
     const [jogadorDaVez, setJogadorDaVez] = useState('X')
     const [gameover, setGameover] = useState(false);
     const [jogadas, setJogadas] = useState([
@@ -55,10 +55,11 @@ export default ({  }) => {
         setJogadas(newJogadas);
         setJogadorDaVez(jogadorDaVez == 'X' ? 'O' : 'X')
         verificaGanhador();
+        change(index);
     }
 
     return (
-        <div className="container">
+        <div className={!current ? "container" : "container velhaCorrente"}>
             <div className="game">
                 {jogadas.map((item, index) => (
                     <button key={index.toString()}
