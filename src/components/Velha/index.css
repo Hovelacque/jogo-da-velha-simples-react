@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #7a1745;
+    border-radius: 5px;
+}
+
+.buttonGame {
+    background-color: #cb4f57;
+    margin: 10px;
+    border: 0px;
+    height: 60px;
+    width: 60px;
+    color: white;
+    border-radius: 10px;
+    font-size: 40px;
+}
+
+.buttonGameGanhou{
+    background-color: #331436;
+}
