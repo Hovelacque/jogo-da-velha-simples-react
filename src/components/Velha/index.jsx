@@ -1,14 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import './index.css'
 
 export default ({ current, change }) => {
     const [jogadorDaVez, setJogadorDaVez] = useState('X')
     const [gameover, setGameover] = useState(false);
+    const [ganhador, setGanhador] = useState('');
     const [jogadas, setJogadas] = useState([
         '', '', '',
         '', '', '',
         '', '', ''
     ])
+
+    useEffect(() => {
+        verificaGanhador();
+    }, [jogadas])
 
     function verificaCelulas(c1, c2, c3) {
         const ganhou = (
@@ -19,7 +24,8 @@ export default ({ current, change }) => {
             jogadas[c2] == jogadas[c3]
         );
 
-        // if (ganhou) {
+        if (ganhou)
+            setGanhador(jogadas[c1]);
         //     game.children[c1].style = 'background-color:#331436;';
         //     game.children[c2].style = 'background-color:#331436;';
         //     game.children[c3].style = 'background-color:#331436;';
@@ -45,17 +51,21 @@ export default ({ current, change }) => {
         }
 
         const totalDeJogadas = jogadas.filter(x => x != '').length;
-        if (totalDeJogadas == 9)
+        if (totalDeJogadas == 9){
+            setGanhador('V');
             setGameover(true);
+        }
     }
 
     const click = (index) => {
-        const newJogadas = [...jogadas]
-        newJogadas[index] = jogadorDaVez
-        setJogadas(newJogadas);
-        setJogadorDaVez(jogadorDaVez == 'X' ? 'O' : 'X')
-        verificaGanhador();
-        change(index);
+        if (!gameover) {
+            const newJogadas = [...jogadas]
+            newJogadas[index] = jogadorDaVez
+            setJogadas(newJogadas);
+            setJogadorDaVez(jogadorDaVez == 'X' ? 'O' : 'X')
+            // verificaGanhador();
+            change(index);
+        }
     }
 
     return (
@@ -69,6 +79,11 @@ export default ({ current, change }) => {
                     </button>
                 ))}
             </div>
+            {gameover &&
+                <div className="ganhador">
+                    {ganhador}
+                </div>
+            }
         </div >
     )
 }

@@ -25,6 +25,18 @@
     font-size: 40px;
 }
 
-.buttonGameGanhou{
+.buttonGameGanhou {
     background-color: #331436;
+}
+
+.ganhador {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 240px;
+    height: 240px;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
